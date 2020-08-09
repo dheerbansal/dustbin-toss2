@@ -12,7 +12,14 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	ball = new Ball(300,600,50,50);
+	var options ={
+		restitution:2.0,
+            isStatic:true,
+            friction:0.5,
+            density:1.2
+        
+	}
+	ball = new Ball(300,600,50,50,options);
 	ball.shapeColor = "white";
 	ball.scale = 2;
 
@@ -27,33 +34,31 @@ function setup() {
 	ground = new Ground(0,790,800,30);
 	ground.shapeColor = "purple";
 
-
-	
-
-
 	Engine.run(engine);
   
 }
-
 
 function draw() {
 Engine.update(engine)
   //rectMode(CENTER);
   background(0);
   ellipse();
+  
+
+  
 
   ground.display();
   ball.display();
+
+  //keyPressed();
   
   drawSprites();
  
 }
 
+
 function keyPressed(){
-	if(keyCode === UP_ARROW){
+	if(keyDown(UP_ARROW)){
 		Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
 	}
 }
-
-
-

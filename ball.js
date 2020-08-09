@@ -1,8 +1,8 @@
 class Ball{
     constructor(x,y,radius){
         var options = {
-            restitution:0.3,
-            isStatic:false,
+            restitution:2.0,
+            isStatic:true,
             friction:0.5,
             density:1.2
      } 
@@ -14,6 +14,6 @@ class Ball{
        display(){
           ellipse();
           ellipse(300,760,50);
-          fill("white")
+         
        }
 }
