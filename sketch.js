@@ -17,11 +17,11 @@ function setup() {
 	ball.scale = 2;
 
 
-	obstacle1 = createSprite(820,700,20,120);
+	obstacle1 = createSprite(820,720,20,120);
 	obstacle1.shapeColor = "white";
-	obstacle2 = createSprite(900,750,150,20);
+	obstacle2 = createSprite(900,770,150,20);
 	obstacle2.shapeColor = "white";
-	obstacle3 = createSprite(980,700,20,120);
+	obstacle3 = createSprite(980,720,20,120);
 	obstacle3.shapeColor = "white";
 	
 	ground = new Ground(0,790,800,30);
@@ -47,6 +47,12 @@ Engine.update(engine)
   
   drawSprites();
  
+}
+
+function keyPressed(){
+	if(keyCode === UP_ARROW){
+		Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
+	}
 }
 
 

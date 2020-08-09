@@ -8,9 +8,12 @@ class Ball{
      } 
         this.body = Bodies.circle(x,y,radius,options)
         this.radius = this.radius
+       // this.shapeColor = "white"
         World.add(world, this.body)
        }
        display(){
           ellipse();
+          ellipse(300,760,50);
+          fill("white")
        }
 }

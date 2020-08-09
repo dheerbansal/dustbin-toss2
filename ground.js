@@ -10,5 +10,6 @@ class Ground{
        }
        display(){
            rectMode(CENTER)
+           rect(600,790,1200, this.height);
        }
    }
