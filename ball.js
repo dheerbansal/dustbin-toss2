@@ -17,3 +17,8 @@ class Ball{
          
        }
 }
+function keyPressed(){
+	if(keyDown(UP_ARROW)){
+		Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
+	}
+}
