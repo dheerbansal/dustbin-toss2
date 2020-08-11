@@ -2,23 +2,23 @@ class Ball{
     constructor(x,y,radius){
         var options = {
             restitution:2.0,
-            isStatic:true,
+            isStatic:false,
             friction:0.5,
             density:1.2
      } 
         this.body = Bodies.circle(x,y,radius,options)
         this.radius = this.radius
-       // this.shapeColor = "white"
         World.add(world, this.body)
        }
        display(){
+
           ellipse();
           ellipse(300,760,50);
-         
-       }
+          //keyPressed();
+          
+                }
 }
-function keyPressed(){
-	if(keyDown(UP_ARROW)){
-		Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
-	}
-}
+
+
+
+

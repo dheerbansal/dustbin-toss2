@@ -12,16 +12,9 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	var options ={
-		restitution:2.0,
-            isStatic:true,
-            friction:0.5,
-            density:1.2
-        
-	}
-	ball = new Ball(300,600,50,50,options);
-	ball.shapeColor = "white";
-	ball.scale = 2;
+	
+	ball = new Ball(300,600,50,50);
+	
 
 
 	obstacle1 = createSprite(820,720,20,120);
@@ -42,19 +35,20 @@ function draw() {
 Engine.update(engine)
   //rectMode(CENTER);
   background(0);
-  ellipse();
+  //ellipse();
   
 
-  
+  keyPressed();
 
   ground.display();
   ball.display();
-
-  //keyPressed();
   
   drawSprites();
  
 }
 
-
-
+function keyPressed(){
+	if(keyDown( RIGHT_ARROW)){
+	  Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
+	}
+  }
