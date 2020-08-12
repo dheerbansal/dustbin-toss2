@@ -33,12 +33,12 @@ function setup() {
 
 function draw() {
 Engine.update(engine)
-  //rectMode(CENTER);
+  rectMode(CENTER);
   background(0);
   //ellipse();
   
 
-  keyPressed();
+  //keyPressed();
 
   ground.display();
   ball.display();
