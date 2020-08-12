@@ -3,6 +3,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Render = Matter.Render
 
 
 function setup() {
@@ -13,20 +14,29 @@ function setup() {
 	world = engine.world;
 
 	
-	ball = new Ball(300,600,50,50);
+	ball = new Ball(300,600,50);
 	
 
 
-	obstacle1 = createSprite(820,720,20,120);
-	obstacle1.shapeColor = "white";
-	obstacle2 = createSprite(900,770,150,20);
-	obstacle2.shapeColor = "white";
-	obstacle3 = createSprite(980,720,20,120);
-	obstacle3.shapeColor = "white";
+	obstacle1 = new Target(820,720,20,120);
+	//obstacle1.shapeColor = "white";
+	obstacle2 =new Target(900,770,150,20);
+	//obstacle2.shapeColor = "white";
+	obstacle3 = new Target(980,720,20,120);
+	//obstacle3.shapeColor = "white";
 	
 	ground = new Ground(0,790,800,30);
 	ground.shapeColor = "purple";
 
+	var render = Render.create({
+		element:document.body,
+		engine:engine,
+		options:{
+			width:1200,
+			height:700,
+			wireframes:false
+		}
+	});
 	Engine.run(engine);
   
 }
@@ -42,13 +52,16 @@ Engine.update(engine)
 
   ground.display();
   ball.display();
+  obstacle1.display();
+  obstacle2.display();
+  obstacle3.display();
   
-  drawSprites();
+  //drawSprites();
  
 }
 
 function keyPressed(){
-	if(keyDown( RIGHT_ARROW)){
+	if(keyCode=== UP_ARROW){
 	  Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
 	}
   }
