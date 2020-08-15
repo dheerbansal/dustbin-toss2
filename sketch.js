@@ -1,4 +1,4 @@
-var ball, obstacle1, obstacle2, obstacle3, ground
+var  ball,obstacle1, obstacle2, obstacle3, ground
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -14,7 +14,7 @@ function setup() {
 	world = engine.world;
 
 	
-	ball = new Ball(300,600,50);
+	ball = new Ball(300,770,50);
 	
 
 
@@ -22,15 +22,15 @@ function setup() {
 	//obstacle1.shapeColor = "white";
 	obstacle2 =new Target(900,770,150,20);
 	//obstacle2.shapeColor = "white";
-	obstacle3 = new Target(980,720,20,120);
+	obstacle3 = new Target(980,720,100,120);
 	//obstacle3.shapeColor = "white";
 	
-	ground = new Ground(0,790,800,30);
+	ground = new Ground(600,790,1200,20);
 	ground.shapeColor = "purple";
 
 	var render = Render.create({
 		element:document.body,
-		engine:engine,
+		engine: engine,
 		options:{
 			width:1200,
 			height:700,

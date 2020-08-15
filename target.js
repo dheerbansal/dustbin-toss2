@@ -1,14 +1,29 @@
 class Target{
     constructor(x,y,width,height){
-        this.body = Bodies.rectangle(x,y,width,height)
+        var options={
+            isStatic:true,
+           // restitution:2.0
+        
+        }
+        this.body = Bodies.rectangle(x,y,width,height,options)
         this.width = this.width
         this.height = this.height
         World.add(world,this.body)
     }
     display(){
-        rectMode(CENTER)
-        rect(820,720,20,120);
-        rect(900,770,150,20);
-        rect(980,720,20,120);
-    }
+        
+            var pos =this.body.position;
+           // var angle = this.body.angle;
+            push();
+            translate(pos.x, pos.y);
+           // rotate(angle);
+            rectMode(CENTER);
+           // strokeWeight(5);
+           // stroke("green")
+            fill(255);
+            rect(0, 0, this.width, this.height);
+            pop();
+          } 
+        
+    
 }
