@@ -4,12 +4,13 @@ class Ball{
             isStatic:false,
             restitution:0.3,
             friction:1.3,
-            density:1
+            density:0.9
         }
         
         this.radius = radius
         this.x = x
         this.y = y
+        this.image= loadImage("paper.png")
         this.body = Bodies.circle(this.x,this.y,this.radius/2,options)
         World.add(world,this.body)
     }
@@ -20,7 +21,7 @@ class Ball{
         rectMode(CENTER)
         strokeWeight(3)
         fill("white")
-        ellipse(0,0,this.radius,this.radius);
+        image(this.image,0,0,this.radius,this.radius);
         pop();
         
         

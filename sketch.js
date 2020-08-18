@@ -1,9 +1,13 @@
-var  ball,obstacle1, obstacle2, obstacle3, ground
+var  ball, obstacle1,obstacle2,obstacle3,ground, dustbinIMG
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Render = Matter.Render
+
+function preload(){
+	dustbinIMG = loadImage("dustbingreen.png");
+}
 
 
 function setup() {
@@ -14,16 +18,25 @@ function setup() {
 	world = engine.world;
 
 	
-	ball = new Ball(300,770,50);
+	ball = new Ball(300,700,50);
+
+	
 	
 
 
-	obstacle1 = new Target(820,720,20,120);
+	obstacle1 = new Target(835,720,20,120);
+	obstacle1.visible = false
 	//obstacle1.shapeColor = "white";
-	obstacle2 =new Target(900,770,150,20);
+	obstacle2 =new Target(920,790,150,20);
+	obstacle2.visible = false
 	//obstacle2.shapeColor = "white";
-	obstacle3 = new Target(980,720,100,120);
+	obstacle3 = new Target(1000,720,20,150);
+	obstacle3.visible = false
 	//obstacle3.shapeColor = "white";
+
+	dustbin = createSprite(950,700,400,750);
+	dustbin.addImage(dustbinIMG);
+	dustbin.scale = 0.6
 	
 	ground = new Ground(600,790,1200,20);
 	ground.shapeColor = "purple";
@@ -44,7 +57,7 @@ function setup() {
 function draw() {
 Engine.update(engine)
   rectMode(CENTER);
-  background(0);
+  background(255);
   //ellipse();
   
 
@@ -52,11 +65,13 @@ Engine.update(engine)
 
   ground.display();
   ball.display();
-  obstacle1.display();
-  obstacle2.display();
-  obstacle3.display();
+ // obstacle1.display();
+  //obstacle2.display();
+  //obstacle3.display();
   
-  //drawSprites();
+ 
+  
+  drawSprites();
  
 }
 
