@@ -1,7 +1,7 @@
 class Ball{
     constructor(x,y,radius){
         var options={
-            isStatic:false,
+            isStatic:true,
             restitution:0.3,
             friction:1.3,
             density:0.9
@@ -11,7 +11,7 @@ class Ball{
         this.x = x
         this.y = y
         this.image= loadImage("paper.png")
-        this.body = Bodies.circle(this.x,this.y,this.radius/2,options)
+        this.body = Bodies.circle(this.x,this.y,(this.radius)/2,options)
         World.add(world,this.body)
     }
     display(){
@@ -20,8 +20,8 @@ class Ball{
         translate(pos.x,pos.y);
         rectMode(CENTER)
         strokeWeight(3)
-        fill("white")
-        image(this.image,0,0,this.radius,this.radius);
+        fill("purple")
+        ellipse(0,0,this.radius,this.radius);
         pop();
         
         

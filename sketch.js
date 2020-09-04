@@ -1,8 +1,9 @@
-var  ball, obstacle1,obstacle2,obstacle3,ground, dustbinIMG
+var  ball, obstacle1,obstacle2,obstacle3,ground, dustbinIMG, slingshot
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Constraint = Matter.Constraint;
 const Render = Matter.Render
 
 function preload(){
@@ -41,6 +42,8 @@ function setup() {
 	ground = new Ground(600,790,1200,20);
 	ground.shapeColor = "purple";
 
+	slingshot = new SlingShot(ball.body,{x:0,y:0});
+
 	var render = Render.create({
 		element:document.body,
 		engine: engine,
@@ -57,7 +60,7 @@ function setup() {
 function draw() {
 Engine.update(engine)
   rectMode(CENTER);
-  background(255);
+  background(0);
   //ellipse();
   
 
@@ -65,6 +68,7 @@ Engine.update(engine)
 
   ground.display();
   ball.display();
+  slingshot.display();
  // obstacle1.display();
   //obstacle2.display();
   //obstacle3.display();
@@ -75,8 +79,10 @@ Engine.update(engine)
  
 }
 
-function keyPressed(){
-	if(keyCode=== UP_ARROW){
-	  Matter.Body.applyForce(ball.body,ball.body.position,{x:85,y:-85});
-	}
-  }
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+}
+
+function mouseReleased(){
+    slingShot.fly();
+}
