@@ -10,7 +10,7 @@ class SlingShot{
         World.add(world,this.sling)
         }
     fly(){
-        this.sling.bodyA = null
+        this.ball1.bodyA = null
     }
     display(){
         if(this.sling.bodyA){

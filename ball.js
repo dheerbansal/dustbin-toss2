@@ -14,9 +14,6 @@ class Ball{
 
         
     }
-    fly(){
-        this.sling.bodyA = null
-    }
     
     display(){
         var pos = this.body.position;

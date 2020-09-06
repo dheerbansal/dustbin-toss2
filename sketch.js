@@ -1,4 +1,4 @@
-var  ball1, obstacle1,obstacle2,obstacle3,ground, dustbinIMG, slingshot
+var  ball1, obstacle1,obstacle2,obstacle3,ground, dustbinIMG, slingshot, obstacle4,dustbin
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -17,13 +17,14 @@ function setup() {
     engine = Engine.create();
 	world = engine.world;
 
-	ball1 = new Ball(100,50);
+	ball1 = new Ball(100,50,50);
 
 	obstacle1 = new Target(835,720,20,120);
 	obstacle1.visible = false
 	//obstacle1.shapeColor = "white";
 	obstacle2 =new Target(920,790,150,20);
 	obstacle2.visible = false
+	obstacle4 = new Target(400,500,30,20)
 	//obstacle2.shapeColor = "white";
 	obstacle3 = new Target(1000,720,20,150);
 	obstacle3.visible = false
@@ -38,8 +39,8 @@ function setup() {
 
 	var options= {
 		bodyA:ball1.body,
-		bodyB:background.body,
-		length: 20,
+		bodyB:obstacle4.body,
+		length: 100,
 		stiffness:0.9
 	 }
 	 var constraint = Constraint.create(options);
@@ -63,7 +64,7 @@ function setup() {
 function draw() {
 Engine.update(engine)
   rectMode(CENTER);
-  background(0);
+  background("white");
   //ellipse();
   
 
@@ -71,7 +72,8 @@ Engine.update(engine)
 
   ground.display();
   ball1.display();
-  slingshot.display();
+  //slingshot.display();
+  
  // obstacle1.display();
   //obstacle2.display();
   //obstacle3.display();
@@ -83,7 +85,7 @@ Engine.update(engine)
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+    Matter.Body.setPosition(ball1.body,{x:mouseX,y:mouseY})
 }
 
 function mouseReleased(){
