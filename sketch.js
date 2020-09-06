@@ -7,7 +7,7 @@ const Constraint = Matter.Constraint;
 const Render = Matter.Render
 
 function preload(){
-	dustbinIMG = loadImage("sprites/dustbingreen.png");
+	dustbinIMG = loadImage("dustbingreen.png");
 }
 
 
@@ -36,7 +36,16 @@ function setup() {
 	ground = new Ground(600,790,1200,20);
 	ground.shapeColor = "purple";
 
-	slingshot = new SlingShot(ball1.body,{x:100,y:50});
+	var options= {
+		bodyA:ball1.body,
+		bodyB:background.body,
+		length: 20,
+		stiffness:0.9
+	 }
+	 var constraint = Constraint.create(options);
+	   World.add(world,constraint)
+
+	
 
 	var render = Render.create({
 		element:document.body,
@@ -78,5 +87,8 @@ function mouseDragged(){
 }
 
 function mouseReleased(){
-    slingshot.fly();
+    ball1.fly();
 }
+
+
+
