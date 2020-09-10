@@ -6,14 +6,19 @@ class Ball{
             friction:0.5,
             density:1.2
         }
-        this.radius = radius
+        this.radius = 50
         this.x = x
         this.y = y
-        this.body = Bodies.circle(this.x,this.y,(this.radius)/2,options)
+        this.image = loadImage("paper.png");
+        this.body = Bodies.circle(this.x,this.y,this.radius,options)
         World.add(world,this.body)
 
         
+
+        
     }
+
+    
     
     display(){
         var pos = this.body.position;
@@ -22,7 +27,8 @@ class Ball{
         rectMode(CENTER)
         strokeWeight(3)
         fill("purple")
-        ellipse(0,0,this.radius,this.radius);
+        image(this.image, 0, 0, this.radius);
+     // image(0,0,this.radius,this.radius)
         pop();
         
         

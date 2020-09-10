@@ -1,4 +1,4 @@
-var  ball1, obstacle1,obstacle2,obstacle3,ground, dustbinIMG, slingshot, obstacle4,dustbin
+var  ball1, obstacle1,obstacle2,obstacle3,ground, dustbinIMG, slingshot, obstacle4,dustbin, slingshot
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -17,7 +17,7 @@ function setup() {
     engine = Engine.create();
 	world = engine.world;
 
-	ball1 = new Ball(100,50,50);
+	ball1 = new Ball(100,50,40);
 
 	obstacle1 = new Target(835,720,20,120);
 	obstacle1.visible = false
@@ -37,14 +37,7 @@ function setup() {
 	ground = new Ground(600,790,1200,20);
 	ground.shapeColor = "purple";
 
-	var options= {
-		bodyA:ball1.body,
-		bodyB:obstacle4.body,
-		length: 100,
-		stiffness:0.9
-	 }
-	 var constraint = Constraint.create(options);
-	   World.add(world,constraint)
+	slingshot = new SlingShot(300,600,ball1.body)
 
 	
 
@@ -72,6 +65,9 @@ Engine.update(engine)
 
   ground.display();
   ball1.display();
+  slingshot.display();
+ // line(ball1.body.position.x,ball1.body.position.y,obstacle4.body.position.x,obstacle4.body.position.y)
+
   //slingshot.display();
   
  // obstacle1.display();
@@ -89,8 +85,9 @@ function mouseDragged(){
 }
 
 function mouseReleased(){
-    ball1.fly();
+   slingshot.fly();
 }
+
 
 
 
